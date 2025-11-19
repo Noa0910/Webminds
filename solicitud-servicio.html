@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Solicitud de servicio — WebMinds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">WebMinds</a>
+      <nav class="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html" class="active">Servicios</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>Solicitud de servicio</h1>
+    <p class="lead">Por favor, rellena el siguiente formulario con la información necesaria para iniciar tu proyecto.</p>
+
+        <form class="contact-form" id="serviceForm" onsubmit="handleServiceForm(event)">
+        <label>Nombre completo
+            <input type="text" name="nombre" required />
+        </label>
+
+        <label>Email de contacto
+            <input type="email" name="email" required />
+        </label>
+
+        <label>Teléfono
+            <input type="tel" name="telefono" />
+        </label>
+
+        <label>Selecciona el servicio que deseas
+            <select name="servicio" required>
+            <option value="">-- Selecciona --</option>
+            <option>Desarrollo Web a Medida</option>
+            <option>eCommerce</option>
+            <option>Integración de CRM</option>
+            <option>Soporte y Mantenimiento</option>
+            <option>Seguridad y Cumplimiento</option>
+            <option>Analítica Avanzada</option>
+            </select>
+        </label>
+
+        <label>Describe tu necesidad
+            <textarea name="descripcion" rows="5" placeholder="Cuéntanos un poco más sobre tu proyecto..." required></textarea>
+        </label>
+
+        <h3 style="margin-top:1.5rem;color:#2563eb;">Agendar cita / videollamada</h3>
+
+        <label>Fecha de la cita
+            <input type="date" name="fecha" required />
+        </label>
+
+        <label>Hora de la cita
+            <input type="time" name="hora" required />
+        </label>
+
+        <label>Plataforma de la reunión
+            <select name="plataforma" required>
+            <option value="">-- Selecciona --</option>
+            <option>Zoom</option>
+            <option>Google Meet</option>
+            <option>Microsoft Teams</option>
+            <option>Llamada Telefónica</option>
+            </select>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+        <p class="muted form-note">Este formulario es solo de demostración. Para recibir solicitudes reales debes conectar un servicio de formularios (Formspree, Netlify Forms, EmailJS, etc.).</p>
+        </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>WebMinds</h4>
+        <p>empresa@webminds.com</p>
+      </div>
+    </div>
+    <div class="container copyright">
+      <small>© <span id="year"></span> WebMinds. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    function handleServiceForm(e){
+      e.preventDefault();
+      alert("✅ Gracias por tu interés. Esta es una demo, los datos no se envían todavía.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

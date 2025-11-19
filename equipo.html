@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Equipo — WebMinds</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="shortcut icon" href="images/favicon.svg">
+  <link rel="manifest" href="images/site.webmanifest">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Header (reutilizamos la misma estructura) -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">WebMinds</a>
+      <button id="nav-toggle-2" class="nav-toggle" aria-label="Abrir menú"><i class="fa fa-bars"></i></button>
+      <nav id="main-nav-2" class="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="equipo.html" class="active">Quiénes somos</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="casos-exito.html">Casos de éxito</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html" class="btn btn-primary">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section container">
+    <h1>Nuestro equipo</h1>
+    <p>Un equipo multidisciplinario que cubre UX/UI, QA, Frontend y Backend.</p>
+
+    <div class="team-grid">
+      <article class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=80" alt="Nicolás Osorio" loading="lazy" onerror="this.src='images/placeholder.svg'" />
+        <h3>Nicolás Osorio Arias</h3>
+        <p class="role">Diseñador UX/UI</p>
+        <p>Especialista en diseño centrado en el usuario y prototipado.</p>
+      </article>
+
+      <article class="team-card">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=300&h=300&q=80" alt="Ana María" loading="lazy" onerror="this.src='images/placeholder.svg'" />
+        <h3>Ana Maria Navarro</h3>
+        <p class="role">Ingeniera de Calidad</p>
+        <p>Control de calidad, pruebas y automatización.</p>
+      </article>
+
+      <article class="team-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&h=300&q=80" alt="Juan David" loading="lazy" onerror="this.src='images/placeholder.svg'" />
+        <h3>Juan David Villaneda</h3>
+        <p class="role">Desarrollador Web Backend</p>
+        <p>Arquitectura, APIs y bases de datos.</p>
+      </article>
+
+      <article class="team-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&h=300&q=80" alt="Isabella" loading="lazy" onerror="this.src='images/placeholder.svg'" />
+        <h3>Isabella Diaz</h3>
+        <p class="role">Desarrolladora Web Frontend</p>
+        <p>Interfaces reactivas y optimizadas para rendimiento.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>WebMinds</h4>
+        <p>empresa@webminds.com</p>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
+        <nav class="footer-nav">
+          <a href="index.html">Inicio</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container copyright">
+      <small>© <span id="year2"></span> WebMinds. Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

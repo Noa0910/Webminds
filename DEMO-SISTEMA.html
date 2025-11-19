@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo - Sistema de Administración WebMinds</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="shortcut icon" href="images/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="CSS/styles.css" />
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #1d4ed8 100%);
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .demo-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .demo-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .demo-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .demo-header p {
+      color: #64748b;
+      font-size: 1.125rem;
+      margin: 0;
+    }
+
+    .demo-section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .demo-section h2 {
+      color: #1f2937;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .demo-section p {
+      color: #6b7280;
+      margin: 0 0 1rem 0;
+      line-height: 1.6;
+    }
+
+    .demo-section ul {
+      color: #6b7280;
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .demo-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .credentials-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .credentials-table th,
+    .credentials-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .credentials-table th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .credentials-table td {
+      color: #6b7280;
+    }
+
+    .demo-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+    }
+
+    .demo-btn:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .demo-btn.secondary {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .demo-btn.secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .highlight {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-block;
+      margin: 0.5rem 0;
+    }
+
+    .warning {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #dc2626;
+      margin: 1rem 0;
+    }
+
+    .success {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #10b981;
+      margin: 1rem 0;
+    }
+
+    .code-block {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .demo-container {
+        margin: 1rem;
+        padding: 2rem;
+      }
+
+      .demo-header h1 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .credentials-table {
+        font-size: 0.875rem;
+      }
+
+      .credentials-table th,
+      .credentials-table td {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <div class="demo-header">
+      <h1>
+        <i class="fa-solid fa-shield-halved"></i>
+        Demo del Sistema de Administración
+      </h1>
+      <p>WebMinds - Sistema de Login Privado y Panel de Administración</p>
+    </div>
+
+    <div class="demo-section">
+      <h2>
+        <i class="fa-solid fa-key"></i>
+        Cómo Acceder al Sistema
+      </h2>
+      <p>El sistema está completamente oculto para usuarios normales. Solo personal autorizado puede acceder:</p>
+      <ol>
+        <li>Ve a la <strong>página principal</strong> (index.html)</li>
+        <li>Escribe la palabra <span class="highlight">"webminds"</span> (sin espacios)</li>
+        <li>Aparecerá un modal con opción de login</li>
+        <li>Haz clic en "Ir al Login"</li>
+        <li>Ingresa las credenciales correspondientes</li>
+      </ol>
+      <div class="warning">
+        <strong>⚠️ Importante:</strong> La combinación de teclas solo funciona en la página principal, no en inputs de texto.
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h2>
+        <i class="fa-solid fa-users"></i>
+        Credenciales de Acceso
+      </h2>
+      <p>Utiliza cualquiera de estas credenciales para probar el sistema:</p>
+      
+      <table class="credentials-table">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Contraseña</th>
+            <th>Nivel de Acceso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>admin</strong></td>
+            <td>admin123</td>
+            <td>Acceso completo</td>
+          </tr>
+          <tr>
+            <td><strong>webminds</strong></td>
+            <td>webminds2024</td>
+            <td>Analytics, contenido, usuarios</td>
+          </tr>
+          <tr>
+            <td><strong>soporte</strong></td>
+            <td>soporte2024</td>
+            <td>Mensajes, contenido</td>
+          </tr>
+          <tr>
+            <td><strong>desarrollo</strong></td>
+            <td>dev2024</td>
+            <td>Acceso completo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="demo-section">
+      <h2>
+        <i class="fa-solid fa-cogs"></i>
+        Características del Sistema
+      </h2>
+      <ul>
+        <li><strong>Acceso Secreto:</strong> Combinación de teclas invisible para usuarios normales</li>
+        <li><strong>Autenticación Segura:</strong> Múltiples usuarios con diferentes permisos</li>
+        <li><strong>Sesiones Temporales:</strong> Expiración automática después de 24 horas</li>
+        <li><strong>Panel Completo:</strong> Dashboard con estadísticas y herramientas</li>
+        <li><strong>Protección de Rutas:</strong> Redirección automática si no está autenticado</li>
+        <li><strong>Interfaz Moderna:</strong> Diseño responsive y profesional</li>
+      </ul>
+    </div>
+
+    <div class="demo-section">
+      <h2>
+        <i class="fa-solid fa-rocket"></i>
+        Probar el Sistema
+      </h2>
+      <p>Haz clic en los botones para probar las diferentes funcionalidades:</p>
+      
+      <a href="index.html" class="demo-btn">
+        <i class="fa-solid fa-home"></i>
+        Ir a la Página Principal
+      </a>
+      
+      <a href="login.html" class="demo-btn secondary">
+        <i class="fa-solid fa-sign-in-alt"></i>
+        Ir Directamente al Login
+      </a>
+      
+      <button class="demo-btn secondary" onclick="showSecretCombo()">
+        <i class="fa-solid fa-eye"></i>
+        Mostrar Combinación Secreta
+      </button>
+    </div>
+
+    <div class="demo-section">
+      <h2>
+        <i class="fa-solid fa-code"></i>
+        Información Técnica
+      </h2>
+      <p>El sistema está construido con tecnologías modernas:</p>
+      <div class="code-block">
+// Combinación secreta para acceder
+const secretCombo = ['w', 'e', 'b', 'm', 'i', 'n', 'd', 's'];
+
+// Verificar autenticación
+if (isAuthenticated()) {
+  showAdminPanel();
+} else {
+  redirectToLogin();
+}
+      </div>
+      <p><strong>Archivos principales:</strong></p>
+      <ul>
+        <li><code>login.html</code> - Página de autenticación</li>
+        <li><code>admin.html</code> - Panel de administración</li>
+        <li><code>js/auth.js</code> - Sistema de autenticación</li>
+        <li><code>js/config.js</code> - Configuración centralizada</li>
+      </ul>
+    </div>
+
+    <div class="success">
+      <strong>✅ Sistema Listo:</strong> El sistema de administración está completamente funcional y listo para usar. 
+      Recuerda que es completamente invisible para usuarios normales.
+    </div>
+  </div>
+
+  <script>
+    function showSecretCombo() {
+      const combo = ['w', 'e', 'b', 'm', 'i', 'n', 'd', 's'];
+      alert(`La combinación secreta es: "${combo.join('')}"\n\nEscribe esta palabra en la página principal para acceder al sistema.`);
+    }
+
+    // Mostrar notificación de bienvenida
+    setTimeout(() => {
+      if (typeof showNotification === 'function') {
+        showNotification('¡Sistema de administración cargado correctamente!', 'success');
+      }
+    }, 1000);
+  </script>
+
+  <!-- Cargar scripts del sistema -->
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Acceso Administrativo - WebMinds</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="shortcut icon" href="images/favicon.svg">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="CSS/styles.css" />
+  
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  
+  <style>
+    /* Login Page Specific Styles */
+    body {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #1d4ed8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .login-header p {
+      color: #64748b;
+      font-size: 0.875rem;
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #374151;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.2s;
+      background: #f9fafb;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      background: white;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-btn:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .error-message {
+      background: #fee2e2;
+      color: #dc2626;
+      padding: 0.75rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      border-left: 4px solid #dc2626;
+      display: none;
+    }
+
+    .success-message {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 0.75rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      border-left: 4px solid #10b981;
+      display: none;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      border-top-color: transparent;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .back-link {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #2563eb;
+    }
+
+    .security-notice {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 0.75rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      text-align: center;
+      border: 1px solid #fbbf24;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        margin: 1rem;
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">
+    <i class="fa-solid fa-arrow-left"></i>
+    Volver al sitio
+  </a>
+
+  <div class="login-container">
+    <div class="login-header">
+      <h1>
+        <i class="fa-solid fa-shield-halved"></i>
+        Acceso Administrativo
+      </h1>
+      <p>Ingresa tus credenciales para acceder al panel de administración</p>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+    <div id="successMessage" class="success-message"></div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" required autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+
+      <button type="submit" class="login-btn" id="loginBtn">
+        <span id="btnText">Iniciar Sesión</span>
+        <div id="loadingSpinner" class="loading" style="display: none;"></div>
+      </button>
+    </form>
+
+    <div class="security-notice">
+      <i class="fa-solid fa-lock"></i>
+      Conexión segura - Solo personal autorizado
+    </div>
+  </div>
+
+  <script>
+    // Sistema de autenticación
+    class AuthSystem {
+      constructor() {
+        this.config = getConfig();
+        this.validCredentials = this.config.credentials;
+        this.sessionKey = this.config.session.key;
+        this.init();
+      }
+
+      init() {
+        // Verificar si ya está autenticado
+        if (this.isAuthenticated()) {
+          this.redirectToAdmin();
+          return;
+        }
+
+        // Configurar el formulario
+        this.setupForm();
+      }
+
+      setupForm() {
+        const form = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const btnText = document.getElementById('btnText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleLogin();
+        });
+
+        // Enter key para enviar
+        document.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' && !loginBtn.disabled) {
+            this.handleLogin();
+          }
+        });
+      }
+
+      async handleLogin() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const loginBtn = document.getElementById('loginBtn');
+        const btnText = document.getElementById('btnText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        // Mostrar loading
+        this.showLoading(true);
+
+        // Simular delay de autenticación
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        if (this.validateCredentials(username, password)) {
+          this.setSession(username);
+          this.showMessage('success', '¡Acceso concedido! Redirigiendo...');
+          
+          // Redirigir al sistema de clientes
+          setTimeout(() => {
+            this.redirectToClientSystem();
+          }, 1500);
+        } else {
+          this.showMessage('error', 'Credenciales incorrectas. Intenta nuevamente.');
+          this.showLoading(false);
+        }
+      }
+
+      validateCredentials(username, password) {
+        return this.validCredentials[username] === password;
+      }
+
+      setSession(username) {
+        const sessionData = {
+          username: username,
+          timestamp: Date.now(),
+          expires: Date.now() + this.config.session.duration
+        };
+        localStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+      }
+
+      isAuthenticated() {
+        const sessionData = localStorage.getItem(this.sessionKey);
+        if (!sessionData) return false;
+
+        try {
+          const session = JSON.parse(sessionData);
+          return Date.now() < session.expires;
+        } catch {
+          return false;
+        }
+      }
+
+      logout() {
+        localStorage.removeItem(this.sessionKey);
+        window.location.href = 'login.html';
+      }
+
+      redirectToAdmin() {
+        window.location.href = 'admin.html';
+      }
+
+      getCurrentUser() {
+        const sessionData = localStorage.getItem(this.sessionKey);
+        if (!sessionData) return null;
+
+        try {
+          const session = JSON.parse(sessionData);
+          return session.username;
+        } catch {
+          return null;
+        }
+      }
+
+      redirectToClientSystem() {
+        // Redirigir según el rol del usuario
+        const currentUser = this.getCurrentUser();
+        const userRole = window.AUTH_CONFIG.userRoles[currentUser];
+        
+        if (userRole === 'administrador') {
+          window.location.href = 'admin-panel.html';
+        } else {
+          window.location.href = 'proyecto.html';
+        }
+      }
+
+      showLoading(show) {
+        const loginBtn = document.getElementById('loginBtn');
+        const btnText = document.getElementById('btnText');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        if (show) {
+          loginBtn.disabled = true;
+          btnText.style.display = 'none';
+          loadingSpinner.style.display = 'inline-block';
+        } else {
+          loginBtn.disabled = false;
+          btnText.style.display = 'inline';
+          loadingSpinner.style.display = 'none';
+        }
+      }
+
+      showMessage(type, message) {
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+
+        // Ocultar mensajes anteriores
+        errorDiv.style.display = 'none';
+        successDiv.style.display = 'none';
+
+        if (type === 'error') {
+          errorDiv.textContent = message;
+          errorDiv.style.display = 'block';
+        } else if (type === 'success') {
+          successDiv.textContent = message;
+          successDiv.style.display = 'block';
+        }
+      }
+    }
+
+    // Inicializar sistema de autenticación
+    const auth = new AuthSystem();
+
+    // Hacer disponible globalmente para otros scripts
+    window.authSystem = auth;
+  </script>
+</body>
+</html>
